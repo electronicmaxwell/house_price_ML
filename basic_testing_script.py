@@ -65,9 +65,7 @@ def cv_models(features, target):
     results_df.columns = ['Model', 'Mean RMSE', 'Std RMSE', 'Training Time (s)']
     results_df.sort_values(by='Mean RMSE', inplace=True) 
 
-    best_model = models[results_df.iloc[0]['Model']]
-
-    return results_df, best_model
+    return results_df, models
 
 def create_submission(test, model, target_csv):
     scaled_predictions = np.expm1(model.predict(test))
